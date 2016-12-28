@@ -18,15 +18,35 @@
 
 <div id="demo">
   <h1>测试: 切换一个元素</h1>
+  <p v-if="ok">完成了</p>
+  <p v-else>未完成</p>
 
+  <br>
+  <button @click="change">切换</button>
+  <p v-show="ok">好啦...</p>
 
   <h1>测试: 切换多个元素</h1>
-
-
+  <template v-if="ok">
+    <p>aaaaaaaaaaa</p>
+    <p>aaaaaaaaaaa2</p>
+    <p>aaaaaaaaaaa3</p>
+  </template>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    el : '#demo',
+    data : {
+      ok: false
+    },
+
+    methods: {
+      change() {
+        this.ok = !this.ok
+      }
+    }
+  });
 </script>
 </body>
 </html>

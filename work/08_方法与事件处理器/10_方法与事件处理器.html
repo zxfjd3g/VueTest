@@ -23,15 +23,61 @@
 <div id="example">
 
   <h2>1. 绑定监听</h2>
+  <button @click="test">Greet2</button>
+  <button @click="test2()">Greet2</button>
+  <button @click="test3(12, $event)">Greet2</button>
 
   <h2>2. 事件修饰符</h2>
-
+  <a href="http://www.baidu.com" @click.prevent="test4">百度一下</a>
+  <div style="width: 200px;height: 200px;background: red" @click="outclick">
+    <div style="width: 100px;height: 100px;background: green" @click.stop="innerclick"></div>
+  </div>
   <h2>3. 按键修饰符</h2>
+  <input @keyup.32="handleKeyup">
+  <input @keyup.enter="handleKeyup">
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    el : '#example',
+    data : {
 
+    },
+    methods : {
+      test() {
+        alert('test()');
+      },
+      test2() {
+        alert('test2()')
+      },
+      test3(num, event) {
+        alert(num+'---'+event.clientX)
+      },
+
+      test4() {
+        alert('test4()');
+      },
+
+      outclick() {
+        alert('点击out')
+      },
+      innerclick() {
+        alert('点击inner')
+      },
+
+      handleKeyup(event) {
+        alert(event.target.value)
+      },
+      handleKeyup(event) {
+        alert(event.target.value)
+      }
+    },
+
+    computed : {
+
+    }
+  });
 </script>
 </body>
 </html>

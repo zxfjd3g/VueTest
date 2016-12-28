@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义组件2_嵌套</title>
+</head>
+<body>
+
+<!--
+父组件和子组件
+1. 父子组件的定义和注册:
+  Vue.component('parent-component',{
+    template: '#parentComp',
+    components : {
+      'child-component' : {
+        template : '<p>Child Component Content</p>'
+      }
+    }
+  });
+2. 父子组件模板标签:
+  <template id="parentComp">
+    <h2>Parent Component Content</h2>
+    <child-component></child-component>
+  </template>
+3. 使用父组件标签
+  <parent-component></parent-component>
+-->
+
+<div id="example1">
+</div>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+
+</script>
+</body>
+</html>

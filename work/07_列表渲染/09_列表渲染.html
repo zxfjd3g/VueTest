@@ -16,12 +16,50 @@
 <div id="demo">
 
   <h2>测试: v-for 遍历数组</h2>
+  <ul>
+    <li v-for="p in persons | filterBy 'o' in 'name'">
+      {{$index}}--{{p.name}}--{{p.age}}
+      --<button @click="deleteItem(p)">删除</button>
+      --<button @click="updateItem(p, {name:'Cot', age:15})">更新</button>
+    </li>
+  </ul>
 
   <h2>测试: v-for 遍历对象</h2>
+  <ul>
+    <li v-for="v in persons[0]">
+      {{$key}}---{{v}}
+    </li>
+  </ul>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    el: '#demo',
+    data: {
+      persons: [
+        {name: 'Tom', age: 12},
+        {name: 'Jack', age: 13},
+        {name: 'Bob', age: 14}
+      ]
+    },
+
+    methods: {
+      deleteItem(p) {
+        //找到下标
+        /*const index = this.persons.indexOf(p)
+        this.persons.splice(index, 1)*/
+        this.persons.$remove(p)
+      },
+
+      updateItem(oldP, newP) {
+        const index = this.persons.indexOf(oldP)
+        //直接设置更新数组中的元素是不会更新界面的
+        //this.persons[index] = newP
+        this.persons.$set(index, newP)
+      }
+    }
+  })
 </script>
 </body>
 </html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义组件1_基本</title>
+</head>
+<body>
+
+<!--
+1. 定义注册全局指令
+  //定义
+  var MyComponent = Vue.extend({
+    template: '<div>A custom component!</div>'
+  })
+  //注册
+  Vue.component('my-component', MyComponent)
+  //定义并注册
+  Vue.component('my-component', {
+    template: '<div>A custom component!</div>'
+  })
+
+2. 定义注册局部指令(只能在当前vue的标签中使用)
+  new Vue({
+    'my-component' : '<div>A custom component!</div>'
+  })
+
+3. 使用自定义组件
+  <my-component></my-component>
+
+4. 可以通过<template>来指定模板标签
+-->
+<div id="demo1">
+  <my-component></my-component>
+  <my-component2></my-component2>
+  <hello></hello>
+  <world></world>
+</div>
+
+<div id="demo2">
+  <my-component>{{msg}}</my-component>
+  <!--<my-component2></my-component2>-->
+</div>
+
+<template id="myComp">
+  <div>A custom component!</div>
+</template>
+
+<script type="text/javascript" src="../js/vue.js"></script>
+<script type="text/javascript">
+  /*
+  1. 定义注册全局组件
+  //方式一:
+  //定义
+  var MyComponent = Vue.extend({
+    template: '<div>This is my component11111</div>',
+  })
+  //注册
+  Vue.component('my-component', MyComponent);
+  */
+  /*
+  //方式二
+  //定义并注册
+  Vue.component('my-component', {
+    template: '<div>A custom component!</div>'
+  })
+  */
+  //方式三
+  Vue.component('my-component', {
+    template: '#myComp'
+  })
+
+
+  var hello = {
+    template: '<div>This is my hello</div>',
+  };
+
+  var world = {
+    template: '<div>This is my world</div>',
+  };
+
+  new Vue({
+    el: '#demo1',
+    //定义局部组件
+    components: {
+      'my-component2': {
+        template: '<div>This is my component22222</div>'
+      },
+      hello,
+      world
+    }
+  });
+
+  new Vue({
+    el: '#demo2'
+  });
+</script>
+</body>
+</html>

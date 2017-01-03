@@ -5,11 +5,57 @@
   <title>Title</title>
 </head>
 <body>
-<div>
+<div id="demo">
+  <p>{{msg}}</p>
+  <button @click="destroy">Destroy</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue({
+    el: '#demo',
+
+    data () {
+      console.log('data()')
+      return {
+        msg: 'atguigu.com'
+      }
+    },
+
+    created () {
+      console.log('created()')
+      //发ajax
+      //启动监听
+      //启动定时器
+    },
+
+    beforeCompile () {
+      console.log('beforeCompile()')
+    },
+
+    compiled () {
+      console.log('compiled()')
+    },
+
+    ready () {
+      console.log('ready()')
+    },
+
+    beforeDestroy () {
+      console.log('beforeDestroy()')
+    },
+
+    destroyed () {
+      console.log('destroyed()')
+    },
+
+    methods: {
+      destroy () {
+        alert('-------');
+        this.$destroy()
+      }
+    }
+  })
 </script>
 </body>
 </html>

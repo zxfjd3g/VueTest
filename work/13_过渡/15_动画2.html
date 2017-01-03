@@ -93,10 +93,19 @@ scale(1.5) : 缩放比例
 -->
 
 <div id="anim" class="demo">
+  <span v-show="ok" transition="bounce">Look at me!</span>
+  <br>
+  <button @click="ok=!ok">Toggle</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script>
+  new Vue({
+    el: '#anim',
+    data: {
+      ok: true
+    }
+  })
 </script>
 </body>
 </html>

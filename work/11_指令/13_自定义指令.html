@@ -24,11 +24,28 @@
 -->
 
 <div id="demo">
+  <p v-upper-text="msg"></p>
+  <p v-lower-text="msg"></p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+  //全局指令
+  Vue.directive('upper-text', function (value) {
+    this.el.innerHTML = value.toUpperCase()
+  })
+  new Vue({
+    el: '#demo',
+    data: {
+      msg: 'I Love You!'
+    },
+    //注册局部指令
+    directives: {
+      'lower-text': function  (value) {
+        this.el.innerHTML = value.toLowerCase()
+      }
+    }
+  })
 </script>
 </body>
 </html>
